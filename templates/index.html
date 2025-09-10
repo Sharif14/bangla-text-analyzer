@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="card">
+  <form method="post" action="{{ url_for('predict_route') }}" class="form">
+    <label for="text">বাংলা টেক্সট</label>
+    <textarea id="text" name="text" rows="5" placeholder="এখানে আপনার টেক্সট লিখুন...">{{ last_text or "" }}</textarea>
+
+    <div class="actions">
+      <button type="submit" class="btn primary">বিশ্লেষণ করুন</button>
+      <button type="reset" class="btn">রিসেট</button>
+    </div>
+  </form>
+
+  {% if error %}
+    <div class="alert error">{{ error }}</div>
+  {% endif %}
+
+  {% if result %}
+    <div class="result">
+      <div class="pill {% if result.label == 'Not' %}positive{% else %}negative{% endif %}">
+        {{ result.label }}
+      </div>
+      <div class="meter">
+        <div class="pill {% if result.label == 'Not' %}positive{% else %}negative{% endif %}">
+      </div>
+      <p class="prob">সম্ভাবনা: <strong>{{ result.prob_pct }}%</strong></p>
+
+      <details class="details">
+        <summary>ইনপুট টেক্সট</summary>
+        <blockquote>{{ result.text }}</blockquote>
+      </details>
+    </div>
+  {% endif %}
+</section>
+
+<section class="card tips">
+  <h3>ব্যবহার টিপস</h3>
+  <ul>
+    <li>শুধু <code>model.py</code> ফাইলে আপনার আসল <code>predict(text)</code> বসিয়ে দিন।</li>
+    <li>রিটার্ন ফরম্যাট বজায় রাখুন: <code>("Cyberbullying" | "Not", probability 0..1)</code></li>
+    <li>API দরকার হলে: <code>POST /api/predict</code> JSON: <code>{ "text": "..." }</code></li>
+  </ul>
+</section>
+
+{% endblock %}

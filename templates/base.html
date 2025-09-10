@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <title>Bangla Cyberbullying Detector</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1>Bangla Cyberbullying Detector</h1>
+      <p class="subtitle">বাংলা টেক্সট ইনপুট দিন, আমরা দেখাবো এটি সাইবারবুলিং কি না এবং সম্ভাবনা স্কোর।</p>
+    </div>
+  </header>
+
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>© {{ 2025 }} Bangla Cyberbullying Text Analyzer • Flask</small>
+    </div>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

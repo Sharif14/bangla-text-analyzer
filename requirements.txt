@@ -1,0 +1,7 @@
+Flask==3.0.3
+Werkzeug==3.0.3
+numpy
+joblib
+tensorflow
+gunicorn
+Werkzeug
