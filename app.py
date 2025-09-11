@@ -4,8 +4,10 @@ from flask import Flask, render_template, request, jsonify
 from werkzeug.middleware.proxy_fix import ProxyFix
 from model.model import predict
 
+
 app = Flask(__name__)
 app.wsgi_app = ProxyFix(app.wsgi_app)
+
 
 @app.get("/")
 def index():
